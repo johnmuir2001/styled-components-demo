@@ -37,9 +37,17 @@ const HeroSection = styled.div`
   background-color: yellow;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  padding: 50px;
+  box-sizing: border-box;
 
   h1 {
     background-color: red;
+  }
+
+  div {
+    padding: 10px;
+    background-color: green;
   }
 
   .nestedTitle {
