@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import { NavBar, NavItem } from "./Navbar.styles";
+import { PrimaryBtn, SecondaryBtn, AlertBtn } from "./components/Buttons";
+import styled from "styled-components";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <NavBar>
+        <NavItem>Home</NavItem>
+        <NavItem>About</NavItem>
+        <NavItem>Work</NavItem>
+      </NavBar>
+
+      <HeroSection>
+        <h1>TITLE</h1>
+        <p>Some text</p>
+        <div>
+          <h3 className="nestedTitle">Nested deeper</h3>
+        </div>
+      </HeroSection>
+
+      <PrimaryBtn>Click Me</PrimaryBtn>
+      <PrimaryBtn>Home Page</PrimaryBtn>
+      <PrimaryBtn>Contact</PrimaryBtn>
+      <SecondaryBtn />
+      <AlertBtn />
+    </>
   );
 }
 
 export default App;
+
+
+const HeroSection = styled.div`
+  width: 100vw;
+  height: 400px;
+  background-color: yellow;
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    background-color: red;
+  }
+
+  .nestedTitle {
+    background-color: pink;
+  }
+`
