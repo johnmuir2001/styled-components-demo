@@ -1,56 +1,60 @@
-import { NavBar, NavItem } from "./Navbar.styles";
-import { PrimaryBtn, SecondaryBtn, AlertBtn } from "./components/Buttons";
 import styled from "styled-components";
+import { useEffect, useState } from "react";
+
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 const App = () => {
+  const [openModal, setOpenModal] = useState(false);
+
+  const updateModal = () => {
+    setOpenModal(!openModal)
+  }
+
+  useEffect(() => {
+
+  }, [])
+
   return (
     <>
-      <NavBar>
-        <NavItem>Home</NavItem>
-        <NavItem>About</NavItem>
-        <NavItem>Work</NavItem>
-      </NavBar>
+      <BrowserRouter>
+        <NavBar>
+          <NavItem to="/">Home</NavItem>
+          <NavItem to="/about">About</NavItem>
+          <NavItem to="/contact">Contact</NavItem>
+        </NavBar>
 
-      <HeroSection>
-        <h1>TITLE</h1>
-        <p>Some text</p>
-        <div>
-          <h3 className="nestedTitle">Nested deeper</h3>
-        </div>
-      </HeroSection>
-
-      <PrimaryBtn>Click Me</PrimaryBtn>
-      <PrimaryBtn>Home Page</PrimaryBtn>
-      <PrimaryBtn>Contact</PrimaryBtn>
-      <SecondaryBtn />
-      <AlertBtn />
+        <Routes>
+          <Route path="/" element={ <Home changeModal={updateModal}/> } />
+          <Route path="/about" element={ <About /> } />
+          <Route path="/contact" element={ <Contact /> } />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
 
 export default App;
 
+const NavBar = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: navy;
+    padding: 20px;
+`;
 
-const HeroSection = styled.div`
-  width: 100vw;
-  height: 400px;
-  background-color: yellow;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 50px;
-  box-sizing: border-box;
+const NavItem = styled(Link)`
+    font-size: 16px;
+    margin: 0 16px;
+    color: white;
+    cursor: pointer;
+    padding: 10px 15px;
 
-  h1 {
-    background-color: red;
-  }
-
-  div {
-    padding: 10px;
-    background-color: green;
-  }
-
-  .nestedTitle {
-    background-color: pink;
-  }
+    &:hover {
+        background-color: blue;
+    }
 `
