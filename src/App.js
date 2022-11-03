@@ -1,60 +1,46 @@
 import styled from "styled-components";
-import { useEffect, useState } from "react";
-
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
+import { NavBar, NavItem } from "./Navbar.styles";
+import { PrimaryBtn, SecondaryBtn, AlertBtn } from "./components/Buttons";
 
 const App = () => {
-  const [openModal, setOpenModal] = useState(false);
-
-  const updateModal = () => {
-    setOpenModal(!openModal)
-  }
-
-  useEffect(() => {
-
-  }, [])
 
   return (
     <>
-      <BrowserRouter>
-        <NavBar>
-          <NavItem to="/">Home</NavItem>
-          <NavItem to="/about">About</NavItem>
-          <NavItem to="/contact">Contact</NavItem>
-        </NavBar>
+      <NavBar>
+        <NavItem>Home</NavItem>
+        <NavItem>About</NavItem>
+        <NavItem>Work</NavItem>
+      </NavBar>
 
-        <Routes>
-          <Route path="/" element={ <Home changeModal={updateModal}/> } />
-          <Route path="/about" element={ <About /> } />
-          <Route path="/contact" element={ <Contact /> } />
-        </Routes>
-      </BrowserRouter>
+      <HeroSection>
+        <h1>TITLE</h1>
+        <p>Some text</p>
+        <div>
+          <h3 className="nestedTitle">Nested deeper</h3>
+        </div>
+      </HeroSection>
+
+      <PrimaryBtn>Click Me</PrimaryBtn>
+      <PrimaryBtn>Home Page</PrimaryBtn>
+      <PrimaryBtn>Contact</PrimaryBtn>
+      <SecondaryBtn />
+      <AlertBtn />
     </>
   );
 }
 
 export default App;
 
-const NavBar = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: navy;
-    padding: 20px;
-`;
-
-const NavItem = styled(Link)`
-    font-size: 16px;
-    margin: 0 16px;
-    color: white;
-    cursor: pointer;
-    padding: 10px 15px;
-
-    &:hover {
-        background-color: blue;
-    }
+const HeroSection = styled.div`
+  width: 100vw;
+  height: 400px;
+  background-color: yellow;
+  display: flex;
+  flex-direction: column;
+  h1 {
+    background-color: red;
+  }
+  .nestedTitle {
+    background-color: pink;
+  }
 `

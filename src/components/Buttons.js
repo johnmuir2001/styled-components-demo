@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 
 export const PrimaryBtn = ({ children }) => {
-
-
-    
     return (
         <Button background="navy" color="white" border="navy">{children}</Button>
     )
